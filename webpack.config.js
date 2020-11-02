@@ -11,6 +11,7 @@ module.exports = {
   
   output: {
     path: path.join(__dirname, "/dist"),
+    publicPath: '/',
     filename: "main.js"
   },
 
@@ -29,16 +30,10 @@ module.exports = {
 
       {
         test: require.resolve('jquery'),
-        use: [
-          {
-            loader: 'expose-loader',
-            options: 'jQuery'
-          },
-          {
-            loader: 'expose-loader',
-            options: '$'
-          }
-        ]
+        loader: 'expose-loader',
+        options: {
+          exposes: ['$', 'jQuery'],
+        }
       },
 
       {
@@ -58,7 +53,7 @@ module.exports = {
             loader: "file-loader", 
             options: {
               name: '[name].[ext]',
-              outputPath: "/images",
+              outputPath: "images",
             }
           }
         ]
@@ -71,7 +66,7 @@ module.exports = {
             loader: "file-loader", 
             options: {
               name: '[name].[ext]',
-              outputPath: "/fonts",
+              outputPath: "fonts",
               esModule: false,
             }
           }
