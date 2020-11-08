@@ -12,21 +12,21 @@ import 'bootstrap';
 import 'jquery-ui-touch-punch/jquery.ui.touch-punch.min.js';
 
 
-$(document).ready(function() {
+$(function() {
 
   $('[data-toggle="tooltip"]').tooltip();
 
-  $('.add-to-cart-btn').click(function() {
+  $('.add-to-cart-btn').on( "click",function() {
       alert('أضيف المُنتج إلى عربة الشراء');
   });
 
     
-  $('.product-option input[type="radio"]').change(function() {
+  $('.product-option input[type="radio"]').on( "change",function() {
     $(this).parents('.product-option').siblings().removeClass('active');
     $(this).parents('.product-option').addClass('active');
   });
 
-  $('[data-remove-from-cart]').click(function() {
+  $('[data-remove-from-cart]').on( "click",function() { 
       $(this).parents('[data-product-info]').remove();
 
       // أعد حساب السعر الإجمالي بعد حذف أحد المُنتجات
@@ -34,7 +34,7 @@ $(document).ready(function() {
   });
 
   // عندما تتغير كمية المنتج
-  $('[data-product-quantity]').change(function() {
+  $('[data-product-quantity]').on( "change",function() {
       
       // اجلب الكمية الجديدة
       var newQuantity = $(this).val();
@@ -87,7 +87,7 @@ $(document).ready(function() {
   };
 
   // عندما يتغير البلد
-  $('#form-checkout select[name="country"]').change(function() {
+  $('#form-checkout select[name="country"]').on( "change",function() {
     // اجلب رمز البلد
     var country = $(this).val();
 
@@ -110,7 +110,7 @@ $(document).ready(function() {
   });
 
       // عندما تتغير طريقة الدفع
-  $('#form-checkout input[name="payment_method"]').change(function() {
+  $('#form-checkout input[name="payment_method"]').on( "change",function() {
 
     // اجلب القيمة المُختارة حاليًا
     var paymentMethod = $(this).val();
