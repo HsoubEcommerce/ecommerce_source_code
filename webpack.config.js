@@ -11,7 +11,7 @@ module.exports = {
   
   output: {
     path: path.join(__dirname, "/dist"),
-    publicPath: '/',
+    publicPath: './',
     filename: "main.js"
   },
 
@@ -40,7 +40,12 @@ module.exports = {
         test: /\.(sa|sc|c)ss$/,
         use: [
            
-            MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader, 
+            options: {
+              publicPath: '/' 
+            }
+          },
            'css-loader',
            'sass-loader'
         ]
@@ -78,9 +83,9 @@ module.exports = {
         use: [
           {
             loader: "html-loader",
-            options: {
-              minimize: true,
-            }
+            // options: {
+            //   minimize: true,
+            // }
           }
         ]
       }
